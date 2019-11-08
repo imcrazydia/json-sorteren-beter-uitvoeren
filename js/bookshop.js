@@ -84,7 +84,11 @@ let sortBookObject = {
 
         data.forEach( book => {
             let section = document.createElement('section');
-            section.className = 'book';
+            section.className = 'bookSelection';
+
+            //main element with all the info except the price and cover
+            let main = document.createElement('main');
+            main.className = 'bookSelection__main';
     
             //create book cover
             let image = document.createElement('img');
@@ -94,12 +98,19 @@ let sortBookObject = {
 
             //create book title
             let title = document.createElement('h3');
-            title.className = 'book__title';
+            title.className = 'bookSelection__title';
             title.textContent = book.titel;
+
+            //add the prices
+            let price = document.createElement('div');
+            price.className = 'bookSelection__price';
+            price.textContent = '€ ' + book.prijs;
             
             //Add the element
             section.appendChild(image);
-            section.appendChild(title);
+            main.appendChild(title);
+            section.appendChild(main);
+            section.appendChild(price);
             document.getElementById('uitvoer').appendChild(section);
         });
 
