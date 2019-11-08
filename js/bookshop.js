@@ -20,20 +20,6 @@ const createTableHead = (arr) => {
     return head;
 }
 
-const createTableRow = (arr, accent) => {
-    let row = "";
-    if(accent == true) {
-       row = "<tr class='bookSelection__row--accent'>";
-    } else {
-       row = "<tr class='bookSelection__row'>";
-    }
-    arr.forEach((item) => {
-        row += "<td class='bookSelection__data-cel'>" + item + "</td>";
-    });
-    row += "</tr>";
-    return row;
-}
-
 const giveMonthNumber = (month) => {
     let number;
     switch (month) {
@@ -93,32 +79,30 @@ let sortBookObject = {
     },
 
     uitvoeren: function(data) {
-        let uitvoer = createTableHead(
-            ["titel", 
-            "auteur(s)", 
-            "cover", 
-            "uitgave", 
-            "bladzijden", 
-            "taal", 
-            "EAN"]);
-        for (let i = 0; i < data.length; i++) {
-            //afwisslende achtergrond kleur
-            let accent = false;
-            i%2 == 0 ? accent = true : accent = false;
+        //first empty the id = 'uitvoer'
+        document.getElementById('uitvoer').innerHTML = "";
 
-            let coverImg = "<img src='" + data[i].cover + "' class='bookSelection__cover' alt='" + data[i].titel + "'>";
+        data.forEach( book => {
+            let section = document.createElement('section');
+            section.className = 'book';
+    
+            //create book cover
+            let image = document.createElement('img');
+            image.className = 'bookSelection__cover';
+            image.setAttribute('src', book.cover);
+            image.setAttribute('alt', book.titel);
 
-            let authors = maakOpsomming(data[i].auteur);
-            uitvoer += createTableRow(
-                [data[i].titel, 
-                authors, 
-                coverImg, 
-                data[i].uitgave, 
-                data[i].paginas, 
-                data[i].taal, 
-                data[i].ean], accent)
-        }
-        document.getElementById('uitvoer').innerHTML = uitvoer;
+            //create book title
+            let title = document.createElement('h3');
+            title.className = 'book__title';
+            title.textContent = book.titel;
+            
+            //Add the element
+            section.appendChild(image);
+            section.appendChild(title);
+            document.getElementById('uitvoer').appendChild(section);
+        });
+
     }
 }
 
