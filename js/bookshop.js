@@ -4,6 +4,11 @@ xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
         sortBookObject.data = JSON.parse(this.responseText);
         sortBookObject.addJSdate();
+
+        //Capital the first letter of the data and sort on that
+        sortBookObject.data.forEach(book => {
+            book.titelUpper = book.titel.toUpperCase();
+        });
         sortBookObject.sort();
     }
 }
@@ -102,7 +107,7 @@ const reverseText = (string) => {
 let sortBookObject = {
     data: "",
 
-    kenmerk: "titel",
+    kenmerk: "titelUpper",
 
     oplopend: 1,
 
