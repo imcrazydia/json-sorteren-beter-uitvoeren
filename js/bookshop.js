@@ -8,6 +8,8 @@ xmlhttp.onreadystatechange = function () {
         //Capital the first letter of the data and sort on that
         sortBookObject.data.forEach(book => {
             book.titelUpper = book.titel.toUpperCase();
+            //also add the (last)name as attribute
+            book.sortAuthor = book.auteur[0];
         });
         sortBookObject.sort();
     }
@@ -146,6 +148,12 @@ let sortBookObject = {
             title.className = 'bookSelection__title';
             title.textContent = reverseText(book.titel);
 
+            //add authors
+            let authors = document.createElement('p');
+            authors.className = 'bookSelection__authors';
+            book.auteur[0] = reverseText(book.auteur[0]);
+            authors.textContent = maakOpsomming(book.auteur);
+
             //add the prices
             let price = document.createElement('div');
             price.className = 'bookSelection__price';
@@ -154,6 +162,7 @@ let sortBookObject = {
             //Add the element
             section.appendChild(image);
             main.appendChild(title);
+            main.appendChild(authors);
             section.appendChild(main);
             section.appendChild(price);
             document.getElementById('uitvoer').appendChild(section);
