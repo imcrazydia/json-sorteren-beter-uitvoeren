@@ -1,15 +1,20 @@
+body {
+    font-family: sans-serif;
+}
 
 .bookSelection__cover {
     width: 100px;
 }
 
 .bookSelection__row--accent {
-background-color: #def;
+    background-color: #def;
 }
+
 .bookSelection__data-cel {
     padding: 1em;
     vertical-align: top;
 }
+
 .bookSelection__data-cel:nth-child(3) {
     padding: 0em;
 }
@@ -22,6 +27,44 @@ background-color: #def;
     margin-bottom: 1em;
 }
 
+.bookSelection:nth-child(even) {
+    background-color: #eee;
+}
+
+.bookSelection__main {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: .5em 0;
+}
+
+.bookSelection__title {
+    margin: 0;
+}
+
+.bookSelection__extra {
+    margin: 0;
+    font-size: .8em;
+    color: #444;
+}
+
 .bookSelection__price {
     font-size: 2em;
+    padding: .5em;
+} 
+
+@media screen and (min-width: 60em) {
+    #uitvoer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 2em;
+    }
+
+    .bookSelection:nth-child(even) {
+        background-color: inherit;
+    }
+
+    .bookSelection:nth-child(4n+2),
+    .bookSelection:nth-child(4n+3) {
+        background-color: #eee;
+    }
 }

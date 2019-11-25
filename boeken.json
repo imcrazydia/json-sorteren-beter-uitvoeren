@@ -1,5 +1,4 @@
-[
-   {
+[{
       "titel": "Summerproof met Sonja",
       "cover": "https://s.s-bol.com/imgbase0/imagebase3/large/FC/0/7/3/5/9200000110145370.jpg",
       "auteur": ["Bakker,Sonja"],
@@ -106,7 +105,7 @@
       "uitgave": "2019-05",
       "paginas": 597,
       "taal": "Nederlands",
-         "ean": "9789041422903",
+      "ean": "9789041422903",
       "prijs": 24.99
    },
    {

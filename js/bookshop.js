@@ -165,7 +165,10 @@ let sortBookObject = {
             let price = document.createElement('div');
             price.className = 'bookSelection__price';
             // https://freeformatter.com/netherlands-standards-code-snippets.html
-            price.textContent = book.prijs.toLocaleString('nl-NL', {currency: 'EUR', style: 'currency'});
+            price.textContent = book.prijs.toLocaleString('nl-NL', {
+                currency: 'EUR',
+                style: 'currency'
+            });
 
             //Add the element
             section.appendChild(image);
