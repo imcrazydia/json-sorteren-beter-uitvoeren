@@ -151,18 +151,27 @@ let sortBookObject = {
             //add authors
             let authors = document.createElement('p');
             authors.className = 'bookSelection__authors';
+            //Reverse the first- and last name of the author
             book.auteur[0] = reverseText(book.auteur[0]);
+            //Authors added to a array and changed into NL String
             authors.textContent = maakOpsomming(book.auteur);
+
+            //Add the extra info
+            let extra = document.createElement('p');
+            extra.className = 'bookSelection__extra';
+            extra.textContent = book.uitgave + ' | aantal pagina\'s: ' + book.paginas + ' | ' + book.taal + ' | ean ' + book.ean;
 
             //add the prices
             let price = document.createElement('div');
             price.className = 'bookSelection__price';
-            price.textContent = '€ ' + book.prijs;
+            // https://freeformatter.com/netherlands-standards-code-snippets.html
+            price.textContent = book.prijs.toLocaleString('nl-NL', {currency: 'EUR', style: 'currency'});
 
             //Add the element
             section.appendChild(image);
             main.appendChild(title);
             main.appendChild(authors);
+            main.appendChild(extra);
             section.appendChild(main);
             section.appendChild(price);
             document.getElementById('uitvoer').appendChild(section);
