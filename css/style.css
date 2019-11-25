@@ -2,6 +2,32 @@ body {
     font-family: sans-serif;
 }
 
+/* Shoppingcart */
+.shoppingcart {
+    width: 3em;
+    height: 3em;
+    background-image: url('../img/shoppingcart.png');
+    background-size: contain;
+    float: right;
+    margin-right: 3em;
+    position: relative;
+}
+
+.shoppingcart__quantity:not(:empty) {
+    background-color: #f00;
+    display: inline-block;
+    color: #fff;
+    position: absolute;
+    top: -.5em;
+    right: -.9em;
+    line-height: .5em;
+    padding: .5em;
+    border-radius: 50%;
+}
+/* end shoppingcart */
+
+/* Books */
+
 .bookSelection__cover {
     width: 100px;
 }
@@ -50,7 +76,21 @@ body {
 .bookSelection__price {
     font-size: 2em;
     padding: .5em;
-} 
+}
+
+.bookSelection__priceButton {
+    display: block;
+    margin: 1.5em auto;
+    background-color: #d00;
+    cursor: pointer;
+    color: #fff;
+    padding: .5em 1em;
+    border-radius: 1em;
+}
+
+.bookSelection__priceButton:hover {
+    background-color: #900;
+}
 
 @media screen and (min-width: 60em) {
     #uitvoer {

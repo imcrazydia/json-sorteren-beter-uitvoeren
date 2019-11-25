@@ -170,12 +170,18 @@ let sortBookObject = {
                 style: 'currency'
             });
 
+            //add price button
+            let priceButton = document.createElement('button');
+            priceButton.className = 'bookSelection__priceButton';
+            priceButton.innerHTML = 'add to<br>shoppingcart';
+
             //Add the element
             section.appendChild(image);
             main.appendChild(title);
             main.appendChild(authors);
             main.appendChild(extra);
             section.appendChild(main);
+            price.appendChild(priceButton);
             section.appendChild(price);
             document.getElementById('uitvoer').appendChild(section);
         });
