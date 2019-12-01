@@ -145,14 +145,16 @@ let shoppingcart = {
             document.getElementById('purchase').appendChild(section);
         });
 
+        //show total price
         let section = document.createElement('section');
         section.className = 'purchasedBook';
-        //show total price
+
         let totalText = document.createElement('div');
-        totalText.className = 'purchasedBook__totalPrice';
+        totalText.className = 'purchasedBook__totalText';
         totalText.innerHTML = 'Total: ';
 
         let showTotalPrice = document.createElement('div');
+        showTotalPrice.className = 'purchasedBook__showTotalPrice';
         showTotalPrice.textContent = this.countTotalPrice().toLocaleString('nl-NL', {
             currency: 'EUR',
             style: 'currency'
