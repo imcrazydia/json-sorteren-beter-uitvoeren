@@ -105,6 +105,16 @@ const reverseText = (string) => {
     return string;
 }
 
+//to add and remove from the shoppingCart object
+let shoppingcart = {
+    items: [],
+    add: function (el) {
+        this.items.push(el);
+        document.querySelector('.shoppingcart__quantity').innerHTML = this.items.length;
+    }
+}
+
+
 //object boeken uitvoeren en sorteren en data
 let sortBookObject = {
     data: "",
@@ -174,6 +184,9 @@ let sortBookObject = {
             let priceButton = document.createElement('button');
             priceButton.className = 'bookSelection__priceButton';
             priceButton.innerHTML = 'add to<br>shoppingcart';
+            priceButton.addEventListener('click', () => {
+                shoppingcart.add(book);
+            })
 
             //Add the element
             section.appendChild(image);
