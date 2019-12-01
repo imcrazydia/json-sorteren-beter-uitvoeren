@@ -108,11 +108,27 @@ const reverseText = (string) => {
 //to add and remove from the shoppingCart object
 let shoppingcart = {
     items: [],
+
+    getItems: function () {
+        let purchase;
+        if (localStorage.getItem('purchasedBooks') == null) {
+            purchase = [];
+        } else {
+            purchase = JSON.parse(localStorage.getItem('purchasedBooks'));
+            document.querySelector('.shoppingcart__quantity').innerHTML = purchase.length;
+        }
+        return purchase;
+    },
+
     add: function (el) {
+        this.items = this.getItems();
         this.items.push(el);
+        localStorage.setItem('purchasedBooks', JSON.stringify(this.items));
         document.querySelector('.shoppingcart__quantity').innerHTML = this.items.length;
     }
 }
+
+shoppingcart.getItems();
 
 
 //object boeken uitvoeren en sorteren en data
