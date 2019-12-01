@@ -72,6 +72,22 @@ let shoppingcart = {
         return purchase;
     },
 
+    deleteItems: function (ean) {
+        this.items.forEach((item, index) => {
+            if (item.ean == ean) {
+                this.items.splice(index, 1);
+            }
+        })
+        //update local storage
+        localStorage.setItem('purchasedBooks', JSON.stringify(this.items));
+        if (this.items.length > 0) {
+            document.querySelector('.shoppingcart__quantity').innerHTML = this.items.length;
+        } else {
+            document.querySelector('.shoppingcart__quantity').innerHTML = "";
+        }
+        this.uitvoeren();
+    },
+
     uitvoeren: function () {
         //first empty the id = 'uitvoer'
         document.getElementById('purchase').innerHTML = "";
@@ -107,6 +123,9 @@ let shoppingcart = {
             //add delete butotn
             let deleteButton = document.createElement('div');
             deleteButton.className = 'purchasedBook__delete';
+            deleteButton.addEventListener('click', () => {
+                this.deleteItems(book.ean);
+            })
 
             //Add the element
             section.appendChild(image);
