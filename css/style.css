@@ -127,3 +127,21 @@ body {
         background-color: #eee;
     }
 }
+
+/* Purchase Page */
+
+.purchasedBook {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-gap: 2em;
+    margin-bottom: .5em;
+}
+
+.purchasedBook__cover {
+    max-width: 50px;
+}
+
+.purchasedBook__title {
+    font-weight: normal;
+    font-size: 1em;
+}

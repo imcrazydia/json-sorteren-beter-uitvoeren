@@ -66,14 +66,10 @@ let shoppingcart = {
             purchase = JSON.parse(localStorage.getItem('purchasedBooks'));
             document.querySelector('.shoppingcart__quantity').innerHTML = purchase.length;
         }
+        purchase.forEach(item => {
+            this.items.push(item);
+        })
         return purchase;
-    },
-
-    add: function (el) {
-        this.items = this.getItems();
-        this.items.push(el);
-        localStorage.setItem('purchasedBooks', JSON.stringify(this.items));
-        document.querySelector('.shoppingcart__quantity').innerHTML = this.items.length;
     },
 
     uitvoeren: function () {
@@ -82,60 +78,36 @@ let shoppingcart = {
 
         this.items.forEach(book => {
             let section = document.createElement('section');
-            section.className = 'bookSelection';
+            section.className = 'purchasedBook';
 
             //main element with all the info except the price and cover
             let main = document.createElement('main');
-            main.className = 'bookSelection__main';
+            main.className = 'purchasedBook__main';
 
             //create book cover
             let image = document.createElement('img');
-            image.className = 'bookSelection__cover';
+            image.className = 'purchasedBook__cover';
             image.setAttribute('src', book.cover);
             image.setAttribute('alt', reverseText(book.titel));
 
             //create book title
             let title = document.createElement('h3');
-            title.className = 'bookSelection__title';
+            title.className = 'purchasedBook__title';
             title.textContent = reverseText(book.titel);
-
-            //add authors
-            let authors = document.createElement('p');
-            authors.className = 'bookSelection__authors';
-            //Reverse the first- and last name of the author
-            book.auteur[0] = reverseText(book.auteur[0]);
-            //Authors added to a array and changed into NL String
-            authors.textContent = maakOpsomming(book.auteur);
-
-            //Add the extra info
-            let extra = document.createElement('p');
-            extra.className = 'bookSelection__extra';
-            extra.textContent = book.uitgave + ' | aantal pagina\'s: ' + book.paginas + ' | ' + book.taal + ' | ean ' + book.ean;
 
             //add the prices
             let price = document.createElement('div');
-            price.className = 'bookSelection__price';
+            price.className = 'purchasedBook__price';
             // https://freeformatter.com/netherlands-standards-code-snippets.html
             price.textContent = book.prijs.toLocaleString('nl-NL', {
                 currency: 'EUR',
                 style: 'currency'
             });
 
-            //add price button
-            let priceButton = document.createElement('button');
-            priceButton.className = 'bookSelection__priceButton';
-            priceButton.innerHTML = 'add to<br>shoppingcart';
-            priceButton.addEventListener('click', () => {
-                shoppingcart.add(book);
-            })
-
             //Add the element
             section.appendChild(image);
             main.appendChild(title);
-            main.appendChild(authors);
-            main.appendChild(extra);
             section.appendChild(main);
-            price.appendChild(priceButton);
             section.appendChild(price);
             document.getElementById('uitvoer').appendChild(section);
         });
