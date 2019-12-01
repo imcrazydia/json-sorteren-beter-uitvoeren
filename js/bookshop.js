@@ -115,7 +115,7 @@ let shoppingcart = {
             purchase = [];
         } else {
             purchase = JSON.parse(localStorage.getItem('purchasedBooks'));
-            document.querySelector('.shoppingcart__quantity').innerHTML = purchase.length;
+            this.uitvoeren;
         }
         return purchase;
     },
@@ -124,7 +124,15 @@ let shoppingcart = {
         this.items = this.getItems();
         this.items.push(el);
         localStorage.setItem('purchasedBooks', JSON.stringify(this.items));
-        document.querySelector('.shoppingcart__quantity').innerHTML = this.items.length;
+        this.uitvoeren();
+    },
+
+    uitvoeren: function () {
+        if (this.items.length > 0) {
+            document.querySelector('.shoppingcart__quantity').innerHTML = this.items.length;
+        } else {
+            document.querySelector('.shoppingcart__quantity').innerHTML = "";
+        }
     }
 }
 

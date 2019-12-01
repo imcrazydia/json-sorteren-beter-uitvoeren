@@ -64,7 +64,6 @@ let shoppingcart = {
             purchase = [];
         } else {
             purchase = JSON.parse(localStorage.getItem('purchasedBooks'));
-            document.querySelector('.shoppingcart__quantity').innerHTML = purchase.length;
         }
         purchase.forEach(item => {
             this.items.push(item);
@@ -135,6 +134,13 @@ let shoppingcart = {
             section.appendChild(deleteButton);
             document.getElementById('purchase').appendChild(section);
         });
+
+        //shoppingcart quantity
+        if (this.items.length > 0) {
+            document.querySelector('.shoppingcart__quantity').innerHTML = this.items.length;
+        } else {
+            document.querySelector('.shoppingcart__quantity').innerHTML = "";
+        }
     }
 
 }
