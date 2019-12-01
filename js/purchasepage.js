@@ -55,6 +55,7 @@ const reverseText = (string) => {
 }
 
 //to add and remove from the shoppingCart object, and get data from the localstorage
+//also shows the total price of all the purchased books
 let shoppingcart = {
     items: [],
 
@@ -86,6 +87,14 @@ let shoppingcart = {
             document.querySelector('.shoppingcart__quantity').innerHTML = "";
         }
         this.uitvoeren();
+    },
+
+    countTotalPrice: function () {
+        let totalPrice = 0;
+        this.items.forEach(book => {
+            totalPrice += book.prijs;
+        });
+        return totalPrice;
     },
 
     uitvoeren: function () {
@@ -135,6 +144,24 @@ let shoppingcart = {
             section.appendChild(deleteButton);
             document.getElementById('purchase').appendChild(section);
         });
+
+        let section = document.createElement('section');
+        section.className = 'purchasedBook';
+        //show total price
+        let totalText = document.createElement('div');
+        totalText.className = 'purchasedBook__totalPrice';
+        totalText.innerHTML = 'Total: ';
+
+        let showTotalPrice = document.createElement('div');
+        showTotalPrice.textContent = this.countTotalPrice().toLocaleString('nl-NL', {
+            currency: 'EUR',
+            style: 'currency'
+
+        });
+
+        section.appendChild(totalText);
+        section.appendChild(showTotalPrice);
+        document.getElementById('purchase').appendChild(section);
 
         //shoppingcart quantity
         if (this.items.length > 0) {
