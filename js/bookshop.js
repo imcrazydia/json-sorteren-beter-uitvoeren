@@ -115,7 +115,10 @@ let shoppingcart = {
             purchase = [];
         } else {
             purchase = JSON.parse(localStorage.getItem('purchasedBooks'));
-            this.uitvoeren;
+            purchase.forEach(item => {
+                this.items.push(item);
+            })
+            this.uitvoeren();
         }
         return purchase;
     },
