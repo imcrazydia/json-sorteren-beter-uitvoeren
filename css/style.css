@@ -94,6 +94,46 @@ body {
     background-color: #900;
 }
 
+/* Purchase Page */
+
+.purchasedBook {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    grid-gap: 2em;
+    margin-bottom: .5em;
+}
+
+.purchasedBook__cover {
+    max-width: 50px;
+}
+
+.purchasedBook__title {
+    font-weight: normal;
+    font-size: 1em;
+}
+
+.purchasedBook__delete {
+    width: 2em;
+    height: 2em;
+    background-image: url(../img/delete.png);
+    background-size: cover;
+    cursor: pointer;
+    border-radius: .3em;
+    background-color: transparent;
+    transition: background-color 1s ease-out;
+}
+
+.purchasedBook__delete:hover {
+    background-color: #f66;
+}
+
+@media screen and (min-width: 40em) {
+    .purchasedBook {
+        max-width: 40em;
+        margin: 0 auto;
+    }
+}
+
 @media screen and (min-width: 60em) {
     #uitvoer {
         display: grid;
@@ -126,22 +166,4 @@ body {
     .bookSelection:nth-child(4n+3) {
         background-color: #eee;
     }
-}
-
-/* Purchase Page */
-
-.purchasedBook {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    grid-gap: 2em;
-    margin-bottom: .5em;
-}
-
-.purchasedBook__cover {
-    max-width: 50px;
-}
-
-.purchasedBook__title {
-    font-weight: normal;
-    font-size: 1em;
 }

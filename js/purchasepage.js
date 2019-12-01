@@ -74,7 +74,7 @@ let shoppingcart = {
 
     uitvoeren: function () {
         //first empty the id = 'uitvoer'
-        document.getElementById('uitvoer').innerHTML = "";
+        document.getElementById('purchase').innerHTML = "";
 
         this.items.forEach(book => {
             let section = document.createElement('section');
@@ -104,12 +104,17 @@ let shoppingcart = {
                 style: 'currency'
             });
 
+            //add delete butotn
+            let deleteButton = document.createElement('div');
+            deleteButton.className = 'purchasedBook__delete';
+
             //Add the element
             section.appendChild(image);
             main.appendChild(title);
             section.appendChild(main);
             section.appendChild(price);
-            document.getElementById('uitvoer').appendChild(section);
+            section.appendChild(deleteButton);
+            document.getElementById('purchase').appendChild(section);
         });
     }
 
