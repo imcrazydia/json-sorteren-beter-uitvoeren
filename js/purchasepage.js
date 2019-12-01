@@ -75,6 +75,7 @@ let shoppingcart = {
         this.items.forEach((item, index) => {
             if (item.ean == ean) {
                 this.items.splice(index, 1);
+                ean = 4;
             }
         })
         //update local storage
